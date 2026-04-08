@@ -1,0 +1,73 @@
+[package]
+name = "dome"
+version = "1.0.0"
+edition = "2021"
+authors = ["Guillermo"]
+description = "A secure password vault with AES-256 encryption"
+repository = "https://github.com/yourusername/dome-rs"
+readme = "README.md"
+keywords = ["password", "vault", "encryption", "security"]
+
+[dependencies]
+# Cryptography & Security
+aes = "0.8"
+pbkdf2 = { version = "0.12", features = ["sha2"] }
+sha2 = "0.10"
+rand = "0.8"
+base64 = "0.21"
+
+# Compression
+flate2 = "1.0"
+
+# Data formats & Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+csv = "1.3"
+
+# Terminal & UI
+crossterm = "0.27"
+ratatui = "0.26"
+colored = "2.1"
+rustyline = "13.0"
+
+# User Input
+rpassword = "7.3"
+
+# Utilities
+chrono = "0.4"
+regex = "1.10"
+anyhow = "1.0"
+thiserror = "1.0"
+log = "0.4"
+env_logger = "0.11"
+
+# HTTP (for auto-updater)
+reqwest = { version = "0.11", features = ["stream"] }
+tokio = { version = "1", features = ["full"] }
+
+# Development dependencies
+[dev-dependencies]
+tempfile = "3.8"
+criterion = "0.5"
+
+# Platform-specific dependencies
+[target.'cfg(unix)'.dependencies]
+users = "0.11"
+
+[target.'cfg(windows)'.dependencies]
+winapi = { version = "0.3", features = ["processthreadsapi", "winbase"] }
+
+# Optimization settings
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
+
+[profile.dev]
+opt-level = 1
+
+[[bin]]
+name = "dome"
+path = "src/main.rs"
