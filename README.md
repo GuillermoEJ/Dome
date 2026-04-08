@@ -53,7 +53,7 @@ powershell -ExecutionPolicy Bypass -File dome-rs/build.ps1
 
 **Option 2: Manual build**
 ```powershell
-git clone https://github.com/yourusername/dome.git
+git clone https://github.com/GuillermoEJ/dome.git
 cd dome\dome-rs
 cargo build --release
 .\target\release\dome.exe
