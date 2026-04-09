@@ -1,0 +1,63 @@
+# Rust build artifacts
+/target/
+debug/
+*.rlib
+**/*.rs.bk
+
+# Cargo lock (COMMITTED for binaries)
+# Uncomment the next line if publishing a library:
+# Cargo.lock
+
+# IDE & Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.idea/
+*.sublime-workspace
+*.code-workspace
+
+# OS specific
+.DS_Store           # macOS
+Thumbs.db           # Windows
+.AppleDouble        # macOS
+.LSOverride         # macOS
+
+# Debug symbols
+*.pdb               # Windows
+*.dSYM/
+
+# Environment & Secrets
+.env
+.env.local
+.env.*.local
+
+# Vault files (CRITICAL: never commit real crypto data!)
+*.vault
+*.vault.json
+*.vault.backup
+config.json
+~/.dome/
+
+# User local config
+.config
+
+# Backups
+*.bak
+*.old
+*.orig
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# Documentation (keep README files, ignore other markdown)
+*.md
+!README.md
+!dome-rs/README.md
+!dome-rs/BUILD.md
+
+# Keep original Python version, ignore other Python files
+dome.py
