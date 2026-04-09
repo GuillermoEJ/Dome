@@ -3,16 +3,18 @@
 /// Format: zlib(IV + AES_CFB_encrypted_data)
 
 use aes::Aes256;
-use cipher::{KeyIvInit, StreamCipher};
+use cipher::{KeyIvInit, AsyncStreamCipher};
+use cfb_mode::{Encryptor, Decryptor};
 use flate2::Compression;
 use flate2::write::GzEncoder;
 use flate2::read::GzDecoder;
 use std::io::{Read, Write};
 use anyhow::{Result, anyhow};
 
-use super::{derive_key, SALT};
+use super::derive_key;
 
-type Aes256Cfb = cfb_mode::Encryptor<Aes256>;
+type Aes256CfbEnc = Encryptor<Aes256>;
+type Aes256CfbDec = Decryptor<Aes256>;
 
 /// Encrypt data with AES-256 CFB mode and zlib compression
 /// 
@@ -32,7 +34,7 @@ pub fn encrypt(data: &[u8], password: &str) -> Result<Vec<u8>> {
     rand::thread_rng().fill_bytes(&mut iv);
     
     // Encrypt data with AES-256 CFB
-    let mut cipher = Aes256Cfb::new_from_slices(&key, &iv)
+    let mut cipher = Aes256CfbEnc::new_from_slices(&key, &iv)
         .map_err(|e| anyhow!("Failed to initialize cipher: {}", e))?;
     
     let mut encrypted = vec![0u8; data.len()];
@@ -77,7 +79,7 @@ pub fn decrypt(encrypted: &[u8], password: &str) -> Result<Vec<u8>> {
     let key = derive_key(password)?;
     
     // Decrypt with AES-256 CFB
-    let mut cipher = Aes256Cfb::new_from_slices(&key, iv)
+    let mut cipher = Aes256CfbDec::new_from_slices(&key, iv)
         .map_err(|e| anyhow!("Failed to initialize cipher: {}", e))?;
     
     let mut plaintext = ciphertext.to_vec();

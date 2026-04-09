@@ -11,6 +11,8 @@ keywords = ["password", "vault", "encryption", "security"]
 [dependencies]
 # Cryptography & Security
 aes = "0.8"
+cipher = "0.4"
+cfb-mode = "0.8"
 pbkdf2 = { version = "0.12", features = ["sha2"] }
 sha2 = "0.10"
 rand = "0.8"

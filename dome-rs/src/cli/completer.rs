@@ -3,16 +3,14 @@
 /// Provides command and file name completion
 
 use rustyline::completion::{Completer, FilenameCompleter, Pair};
-use rustyline::context::Context;
+use rustyline::Context;
 use rustyline::error::ReadlineError;
 use rustyline::hint::Hinter;
 use rustyline::validate::Validator;
 use rustyline::highlight::Highlighter;
-use rustyline::Helper;
 
 use super::COMMANDS;
 
-#[derive(Helper)]
 pub struct CommandCompleter {
     filename_completer: FilenameCompleter,
 }
