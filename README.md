@@ -1,4 +1,4 @@
-# DOME - Secure Password Vault
+# DOME - Data Obfuscation & Management Engine
 
 [![Rust](https://img.shields.io/badge/Rust-1.75%2B-orange?logo=rust)](https://www.rust-lang.org/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
