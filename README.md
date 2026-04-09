@@ -1,11 +1,11 @@
-# DOME - Secure Password Vault
+# DOME - Data Obfuscation & Management Engine
 
 [![Rust](https://img.shields.io/badge/Rust-1.75%2B-orange?logo=rust)](https://www.rust-lang.org/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)]()
 [![Security](https://img.shields.io/badge/Security-AES--256-critical)]()
 
-A lightweight, secure, and fast password manager written in Rust with production-ready code.
+A lightweight, secure and fast file manager written in Rust.
 
 > 🔐 **High-level security** | ⚡ **Native performance** | 📦 **Single binary** | 🛡️ **Memory-safe by design**
 
