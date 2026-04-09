@@ -1,4 +1,4 @@
-.PHONY: help build release test clean fmt lint run install
+.PHONY: help build release test clean fmt lint run install uninstall check all
 
 help:
 	@echo "DOME - Secure Password Vault"
@@ -12,8 +12,12 @@ help:
 	@echo "  make clean      - Remove build artifacts"
 	@echo "  make fmt        - Format code (cargo fmt)"
 	@echo "  make lint       - Check code with clippy"
+	@echo "  make check      - Quick compile check"
 	@echo "  make size       - Show binary size"
 	@echo "  make doc        - Generate and open documentation"
+	@echo "  make install    - Install to ~/.local/bin/dome"
+	@echo "  make uninstall  - Remove installed binary"
+	@echo "  make all        - Clean, format, lint, test, and build release"
 
 build:
 	@echo "Building debug version..."
@@ -54,11 +58,11 @@ lint:
 
 size: release
 	@echo ""
-	@echo "Binary sizes:"
-	@ls -lh target/release/dome
+	@echo "Binary size:"
+	@ls -lh target/release/dome*
 	@echo ""
-	@echo "Stripped size (Linux/macOS):"
-	@strip -o /tmp/dome-stripped target/release/dome 2>/dev/null && ls -lh /tmp/dome-stripped || echo "(Windows - skip strip)"
+	@echo "Release info:"
+	@file target/release/dome* || echo "(binary info unavailable)"
 
 doc:
 	@echo "Generating documentation..."
@@ -73,10 +77,17 @@ install: release
 	@mkdir -p ~/.local/bin
 	@cp target/release/dome ~/.local/bin/
 	@chmod +x ~/.local/bin/dome
-	@echo "Done! Add to PATH if not already:"
+	@echo "✅ Done! Binary installed at ~/.local/bin/dome"
+	@echo ""
+	@echo "To use from anywhere, add to your shell profile:"
 	@echo "  export PATH=~/.local/bin:$$PATH"
 
+uninstall:
+	@echo "Removing installed binary..."
+	@rm -f ~/.local/bin/dome
+	@echo "✅ Done!"
+
 all: clean fmt lint test release
-	@echo ""
-	@echo "✅ Everything complete!"
+	@echo "✅ All tasks completed!"
+	@echo "Everything complete!"
 	@echo "Binary ready at: ./target/release/dome"
