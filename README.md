@@ -5,7 +5,7 @@
 [![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)]()
 [![Security](https://img.shields.io/badge/Security-AES--256-critical)]()
 
-A lightweight, secure, and fast file manager written in Rust.
+A lightweight, secure and fast file manager written in Rust.
 
 > 🔐 **High-level security** | ⚡ **Native performance** | 📦 **Single binary** | 🛡️ **Memory-safe by design**
 
