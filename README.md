@@ -7,18 +7,6 @@
 
 A lightweight, secure and fast password manager written in Rust.
 
-> 🔐 **High-level security** | ⚡ **Native performance** | 📦 **Single binary** | 🛡️ **Memory-safe by design**
-
-## Features
-
-### 🔐 Security
-- **AES-256 CFB** encryption with random IV
-- **PBKDF2-SHA256** key derivation
-- **Zlib compression** for storage efficiency
-- No plaintext passwords stored or logged
-- Memory-safe Rust implementation
-
-### 💾 Core Functionality
 - Create, edit, and delete password entries
 - Full-text search by title and content
 - Auto-generate secure passwords (16+ characters)
@@ -26,15 +14,9 @@ A lightweight, secure and fast password manager written in Rust.
 - Multiple vault support
 - Automatic encryption on save
 
-### ⚙️ Architecture
-- **Modular design** - Separate crypto, vault, CLI, and storage layers
-- **Cross-platform** - Works on Windows, macOS, Linux, and ARM
-- **Async-ready** - Built with tokio for future enhancements
-- **Type-safe** - Leverages Rust's type system for correctness
-
 ## Installation
 
-### macOS / Linux
+### Linux
 
 ```bash
 # Build from source
@@ -142,15 +124,6 @@ cargo tarpaulin
 - Keys zero'd from memory after use (future enhancement with `zeroize`)
 - No temporary files with plaintext
 
-## Platform Support
-
-| Platform | Status | Notes |
-|----------|--------|-------|
-| **Linux** | Tested | x86_64, ARM64 |
-| **macOS** | Tested | Intel, Apple Silicon (M1/M2) |
-| **Windows** | Tested | Windows 10+ |
-| **BSD** | Compatible | Not officially tested |
-
 ## Dependencies
 
 ### Production
@@ -208,7 +181,7 @@ cargo clippy
 
 ## License
 
-MIT License - See [LICENSE](LICENSE) file for details.
+[MIT](LICENSE)
 
 
 ## Support
